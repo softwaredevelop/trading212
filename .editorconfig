@@ -17,5 +17,5 @@ indent_size = 2
 [*.{go,mod,sum}]
 indent_style = tab
 
-[*.{yaml}]
+[*.{yaml,yml}]
 indent_size = 2
