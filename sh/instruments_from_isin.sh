@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TRADING212_HOST=${TRADING212_HOST:-"demo.trading212.com"}
-ISIN=${1:?"Error: TICKER is required as the first argument."}
+ISIN=${1:?"Error: ISIN is required as the first argument."}
 TYPE=${2:-"ETF"}
 CURRENCY=${3:-"EUR"}
 
