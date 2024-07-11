@@ -9,7 +9,7 @@ INSTRUMENT_SHARES=$(cat "${INSTRUMENT_SHARES_FILE}")
 
 curl -s -X POST \
   https://"${TRADING212_HOST}"/api/v0/equity/pies \
-  -H "Authorization: $TRADING212_API_KEY" \
+  -H "Authorization: ${TRADING212_API_KEY}" \
   -H 'Content-Type: application/json' \
   -d '{
     "dividendCashAction": "REINVEST",
