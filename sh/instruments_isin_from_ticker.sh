@@ -7,5 +7,5 @@ CURRENCY=${3:-"EUR"}
 
 curl -s -X GET \
   https://"${TRADING212_HOST}"/api/v0/equity/metadata/instruments \
-  -H "Authorization: $TRADING212_API_KEY" |
-  jq --arg ticker "$TICKER" --arg type "$TYPE" --arg currency "$CURRENCY" -r '.[] | select(.ticker == $ticker and .type == $type and .currencyCode == $currency) | .isin'
+  -H "Authorization: ${TRADING212_API_KEY}" |
+  jq --arg ticker "${TICKER}" --arg type "${TYPE}" --arg currency "${CURRENCY}" -r '.[] | select(.ticker == $ticker and .type == $type and .currencyCode == $currency) | .isin'
