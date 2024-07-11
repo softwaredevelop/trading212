@@ -7,5 +7,5 @@ CURRENCY=${3:-"EUR"}
 
 curl -s -X GET \
   https://"${TRADING212_HOST}"/api/v0/equity/metadata/instruments \
-  -H "Authorization: $TRADING212_API_KEY" |
-  jq --arg isin "$ISIN" --arg type "$TYPE" --arg currency "$CURRENCY" '.[] | select(.isin == $isin and .type == $type and .currencyCode == $currency)'
+  -H "Authorization: ${TRADING212_API_KEY}" |
+  jq --arg isin "${ISIN}" --arg type "${TYPE}" --arg currency "${CURRENCY}" '.[] | select(.isin == $isin and .type == $type and .currencyCode == $currency)'
