@@ -7,8 +7,8 @@ CURRENCY=${3:-"EUR"}
 
 INSTRUMENTS=$(curl -s -X GET \
   https://"${TRADING212_HOST}"/api/v0/equity/metadata/instruments \
-  -H "Authorization: $TRADING212_API_KEY")
+  -H "Authorization: ${TRADING212_API_KEY}")
 
 while IFS= read -r TICKER; do
-  echo "$INSTRUMENTS" | jq --arg ticker "$TICKER" --arg type "$TYPE" --arg currency "$CURRENCY" -r '.[] | select(.ticker == $ticker and .type == $type and .currencyCode == $currency) | .isin'
-done <"$TICKER_FILE"
+  echo "${INSTRUMENTS}" | jq --arg ticker "${TICKER}" --arg type "${TYPE}" --arg currency "${CURRENCY}" -r '.[] | select(.ticker == $ticker and .type == $type and .currencyCode == $currency) | .isin'
+done <"${TICKER_FILE}"
