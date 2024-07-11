@@ -7,8 +7,8 @@ CURRENCY=${3:-"EUR"}
 
 INSTRUMENTS=$(curl -s -X GET \
   https://"${TRADING212_HOST}"/api/v0/equity/metadata/instruments \
-  -H "Authorization: $TRADING212_API_KEY")
+  -H "Authorization: ${TRADING212_API_KEY}")
 
 while IFS= read -r ISIN; do
-  echo "$INSTRUMENTS" | jq --arg isin "$ISIN" --arg type "$TYPE" --arg currency "$CURRENCY" '.[] | select(.isin == $isin and .type == $type and .currencyCode == $currency)'
-done <"$ISIN_FILE"
+  echo "${INSTRUMENTS}" | jq --arg isin "${ISIN}" --arg type "${TYPE}" --arg currency "${CURRENCY}" '.[] | select(.isin == $isin and .type == $type and .currencyCode == $currency)'
+done <"${ISIN_FILE}"
