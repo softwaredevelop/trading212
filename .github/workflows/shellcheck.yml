@@ -1,12 +1,14 @@
 ---
 name: shellcheck
 
-run-name: ShellCheck
+run-name: Shellcheck
 
 on:
   pull_request:
     branches:
       - "main"
+    paths:
+      - "**/*.sh"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -24,7 +26,7 @@ jobs:
           concurrent_skipping: never
 
   shellcheck:
-    name: ShellCheck
+    name: Shellcheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -32,6 +34,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Shell script analysis
-        run: |
-          shellcheck $(find . -type f -name '*.sh')
+      - name: Call Dagger Function
+        uses: dagger/dagger-for-github@v6
+        with:
+          args: check --source=. stdout
+          module: github.com/softwaredevelop/daggerverse/shellcheck@main
+          verb: call
+          version: "latest"
