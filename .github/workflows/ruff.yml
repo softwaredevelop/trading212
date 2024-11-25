@@ -9,6 +9,7 @@ on:
       - "main"
     paths:
       - "**/*.py"
+      - "**/*.ipynb"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
