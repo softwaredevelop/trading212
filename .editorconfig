@@ -19,6 +19,3 @@ indent_style = tab
 
 [*.{yaml,yml}]
 indent_size = 2
-
-[*.{ipynb}]
-indent_size = 2
